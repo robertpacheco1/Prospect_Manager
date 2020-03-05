@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Deal" representedClassName="Deal" syncable="YES">
+        <attribute name="dateSold" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="lastName" attributeType="String" defaultValueString=""/>
+        <attribute name="make" attributeType="String" defaultValueString=""/>
+        <attribute name="model" attributeType="String" defaultValueString=""/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="trim" attributeType="String" defaultValueString=""/>
+        <attribute name="type" attributeType="String" defaultValueString=""/>
+        <attribute name="year" attributeType="String" defaultValueString=""/>
+        <relationship name="person" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="deal" inverseEntity="Person"/>
+    </entity>
+    <entity name="Person" representedClassName="Person" syncable="YES">
+        <attribute name="cellPhone" attributeType="String" defaultValueString=""/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="lastName" attributeType="String" defaultValueString=""/>
+        <attribute name="note" attributeType="String" defaultValueString=""/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="selected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="deal" toMany="YES" deletionRule="Cascade" destinationEntity="Deal" inverseName="person" inverseEntity="Deal"/>
+        <relationship name="img" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pictures" inverseName="person" inverseEntity="Pictures"/>
+        <relationship name="todo" toMany="YES" deletionRule="Cascade" destinationEntity="ToDo" inverseName="person" inverseEntity="ToDo"/>
+    </entity>
+    <entity name="Pictures" representedClassName="Pictures" syncable="YES">
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="img" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="lastName" attributeType="String" defaultValueString=""/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="img" inverseEntity="Person"/>
+    </entity>
+    <entity name="ToDo" representedClassName="ToDo" syncable="YES">
+        <attribute name="due" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstName" attributeType="String" defaultValueString=""/>
+        <attribute name="isComplete" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <relationship name="person" maxCount="1" deletionRule="Cascade" destinationEntity="Person" inverseName="todo" inverseEntity="Person"/>
+    </entity>
+    <elements>
+        <element name="Deal" positionX="-63" positionY="45" width="128" height="208"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="ToDo" positionX="-54" positionY="108" width="128" height="133"/>
+        <element name="Pictures" positionX="-45" positionY="117" width="128" height="133"/>
+    </elements>
+</model>
